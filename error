@@ -67,3 +67,11 @@ PS D:\pia-teach-websit-terraform> Can't configure a value for "map_public_ip_on_
 │   with aws_db_instance.piano_db,
 │   on main.tf line 146, in resource "aws_db_instance" "piano_db":
 │  146: resource "aws_db_instance" "piano_db" {
+
+
+
+44.199.208.236    
+
+nginx: [warn] conflicting server name "_" on 0.0.0.0:80, ignored
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
