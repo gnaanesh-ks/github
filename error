@@ -75,3 +75,29 @@ PS D:\pia-teach-websit-terraform> Can't configure a value for "map_public_ip_on_
 nginx: [warn] conflicting server name "_" on 0.0.0.0:80, ignored
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+
+
+2026/06/10 17:05:00 [error] 2874#2874: *26 open() "/usr/share/nginx/html/404.html" failed (2: No such file or directory), client: 109.164.51.2, server: _, request: "GET /script.js HTTP/1.1", host: "44.199.208.236", referrer: "http://44.199.208.236/"
+2026/06/10 17:13:29 [error] 2874#2874: *30 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 66.132.195.105, server: _, request: "GET /favicon.ico HTTP/1.1", host: "44.199.208.236"
+2026/06/10 17:13:29 [error] 2874#2874: *30 open() "/usr/share/nginx/html/404.html" failed (2: No such file or directory), client: 66.132.195.105, server: _, request: "GET /favicon.ico HTTP/1.1", host: "44.199.208.236"
+2026/06/10 17:13:38 [error] 2874#2874: *33 open() "/usr/share/nginx/html/wiki" failed (2: No such file or directory), client: 66.132.195.105, server: _, request: "GET /wiki HTTP/1.1", host: "44.199.208.236"
+2026/06/10 17:13:38 [error] 2874#2874: *33 open() "/usr/share/nginx/html/404.html" failed (2: No such file or directory), client: 66.132.195.105, server: _, request: "GET /wiki HTTP/1.1", host: "44.199.208.236"
+2026/06/10 17:13:43 [warn] 3548#3548: conflicting server name "_" on 0.0.0.0:80, ignored
+2026/06/10 17:13:43 [warn] 3550#3550: conflicting server name "_" on 0.0.0.0:80, ignored
+2026/06/10 17:21:26 [warn] 4165#4165: conflicting server name "_" on 0.0.0.0:80, ignored
+2026/06/10 17:21:26 [warn] 4168#4168: conflicting server name "_" on 0.0.0.0:80, ignored
+2026/06/10 17:28:33 [warn] 4647#4647: conflicting server name "_" on 0.0.0.0:80, ignored
+
+
+[ec2-user@ip-172-31-8-77 ~]$ sudo tail -f /var/log/nginx/access.log
+109.164.51.2 - - [10/Jun/2026:17:22:48 +0000] "GET / HTTP/1.1" 404 555 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
+109.164.51.2 - - [10/Jun/2026:17:22:53 +0000] "GET / HTTP/1.1" 404 555 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
+109.164.51.2 - - [10/Jun/2026:17:22:53 +0000] "GET / HTTP/1.1" 404 555 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
+109.164.51.2 - - [10/Jun/2026:17:27:13 +0000] "GET / HTTP/1.1" 404 555 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
+109.164.51.2 - - [10/Jun/2026:17:27:14 +0000] "GET / HTTP/1.1" 404 555 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36" "-"
+13.58.178.173 - - [10/Jun/2026:17:27:40 +0000] "GET / HTTP/1.1" 404 555 "-" "visionheight.com/scan Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Chrome/126.0.0.0 Safari/537.36" "-"
+13.58.178.173 - - [10/Jun/2026:17:27:41 +0000] "\x03\x00\x00+&\xE0\x00\x00\x00\x00\x00Cookie: mstshash=zgrab" 400 157 "-" "-" "-"
+13.58.178.173 - - [10/Jun/2026:17:29:39 +0000] "\x16\x03\x01\x01\x00\x01\x00\x00\xFC\x03\x03Xe\xFC\xEE\xE9'[\x82\xB7P\xF5\xE5:\xB5_\x5C\x5C_\xD8J7:F\xB0\xA1\x9B\x02\x83L</\xC1 D\xDB\xF6\xEE\x7FeY\xDA@r\xAF\xF0\xD2\x112#\xDD\xF7Ak\xD6\x80\xB8\x81\xE3\x85cZ\xE2\x9C\xF4~\x00&\xCC\xA8\xCC\xA9\xC0/\xC00\xC0+\xC0,\xC0\x13\xC0\x09\xC0\x14\xC0" 400 157 "-" "-" "-"
+13.58.178.173 - - [10/Jun/2026:17:30:21 +0000] "\x16\x03\x01\x00\xEE\x01\x00\x00\xEA\x03\x03S\xAFR1\xEE\x16\xC3\x81K\xFEy\xD8\xAF\xECC\xB3\xA3R\xADL\xCAC" 400 157 "-" "-" "-"
+13.58.178.173 - - [10/Jun/2026:17:30:41 +0000] "GET / HTTP/1.1" 404 555 "-" "visionheight.com/scan Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Chrome/126.0.0.0 Safari/537.36" "-"
