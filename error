@@ -54,3 +54,9 @@ resource "aws_db_subnet_group" "piano_db_subnet_group" {
 
 
 Can't configure a value for "map_public_ip_on_launch": its value will be decided automatically based on the result of applying this configuration.
+
+│ Error: deleting Security Group (sg-0af657e0b1d7bcbb9): operation error EC2: DeleteSecurityGroup, https response error StatusCode: 400, RequestID: 3ddf24f3-8bad-4804-ba8a-3e3c3dc1e468, api error DependencyViolation: resource sg-0af657e0b1d7bcbb9 has a dependent object
+│ 
+│ 
+╵
+PS D:\pia-teach-websit-terraform> Can't configure a value for "map_public_ip_on_launch": its value will be decided automatically based on the result of applying this configuration.
