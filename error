@@ -51,3 +51,6 @@ resource "aws_db_subnet_group" "piano_db_subnet_group" {
 │  176: resource "aws_db_subnet_group" "piano_db_subnet_group" {
 │ 
 │ A aws_db_subnet_group resource named "piano_db_subnet_group" was already declared at main.tf:32,1-55. Resource names must be unique per type in each module.
+
+
+Can't configure a value for "map_public_ip_on_launch": its value will be decided automatically based on the result of applying this configuration.
