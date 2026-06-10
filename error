@@ -11,3 +11,34 @@ Error: creating EC2 Instance: operation error EC2: RunInstances, https response 
 │   with aws_db_subnet_group.piano_db_subnet_group,
 │   on main.tf line 158, in resource "aws_db_subnet_group" "piano_db_subnet_group":
 │  158: resource "aws_db_subnet_group" "piano_db_subnet_group" {
+
+
+
+data "aws_subnets" "default_public" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
+  filter {
+    name   = "map-public-ip-on-launch"
+    values = ["true"] # Filter for public subnets
+  }
+  filter { # Optional: Filter for subnets that actually have a route to an internet gateway
+    name   = "tag:aws:cloudformation:stack-name" # Or other tags to identify public subnets
+    values = ["*"] # This is a bit generic. If you created subnets, tag them.
+  }
+  # More reliable way to get all default public subnets (without custom tags):
+  # Simply list all subnets in the default VPC, they will typically span multiple AZs.
+  # AWS default subnets are usually public.
+}
+
+resource "aws_db_subnet_group" "piano_db_subnet_group" {
+  name        = "piano-db-subnet-group-ci-cd"
+  description = "A group of subnets for the Piano Teaching DB CI/CD"
+  # Use the IDs of all found public subnets
+  subnet_ids  = data.aws_subnets.default_public.ids
+
+  tags = {
+    Name = "PianoDBSubnetGroup-CI-CD"
+  }
+}
