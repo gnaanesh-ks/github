@@ -101,3 +101,28 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 13.58.178.173 - - [10/Jun/2026:17:29:39 +0000] "\x16\x03\x01\x01\x00\x01\x00\x00\xFC\x03\x03Xe\xFC\xEE\xE9'[\x82\xB7P\xF5\xE5:\xB5_\x5C\x5C_\xD8J7:F\xB0\xA1\x9B\x02\x83L</\xC1 D\xDB\xF6\xEE\x7FeY\xDA@r\xAF\xF0\xD2\x112#\xDD\xF7Ak\xD6\x80\xB8\x81\xE3\x85cZ\xE2\x9C\xF4~\x00&\xCC\xA8\xCC\xA9\xC0/\xC00\xC0+\xC0,\xC0\x13\xC0\x09\xC0\x14\xC0" 400 157 "-" "-" "-"
 13.58.178.173 - - [10/Jun/2026:17:30:21 +0000] "\x16\x03\x01\x00\xEE\x01\x00\x00\xEA\x03\x03S\xAFR1\xEE\x16\xC3\x81K\xFEy\xD8\xAF\xECC\xB3\xA3R\xADL\xCAC" 400 157 "-" "-" "-"
 13.58.178.173 - - [10/Jun/2026:17:30:41 +0000] "GET / HTTP/1.1" 404 555 "-" "visionheight.com/scan Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Chrome/126.0.0.0 Safari/537.36" "-"
+
+
+
+
+[root@ip-172-31-16-200 nginx]# sudo systemctl restart nginx
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
+[root@ip-172-31-16-200 nginx]# sudo systemctl restart nginx.service 
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
+[root@ip-172-31-16-200 nginx]# systemctl status nginx.service 
+× nginx.service - The nginx HTTP and reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: disabled)
+     Active: failed (Result: exit-code) since Wed 2026-06-10 18:36:56 UTC; 44s ago
+   Duration: 6min 22.550s
+    Process: 28392 ExecStartPre=/usr/bin/rm -f /run/nginx.pid (code=exited, status=0/SUCCESS)
+    Process: 28393 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=1/FAILURE)
+        CPU: 14ms
+
+Jun 10 18:36:56 ip-172-31-16-200.ec2.internal systemd[1]: Starting nginx.service - The nginx HTTP and reverse proxy server...
+Jun 10 18:36:56 ip-172-31-16-200.ec2.internal nginx[28393]: nginx: [emerg] open() "/etc/nginx/nginx.conf" failed (2: No such file or directory)
+Jun 10 18:36:56 ip-172-31-16-200.ec2.internal nginx[28393]: nginx: configuration file /etc/nginx/nginx.conf test failed
+Jun 10 18:36:56 ip-172-31-16-200.ec2.internal systemd[1]: nginx.service: Control process exited, code=exited, status=1/FAILURE
+Jun 10 18:36:56 ip-172-31-16-200.ec2.internal systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jun 10 18:36:56 ip-172-31-16-200.ec2.internal systemd[1]: Failed to start nginx.service - The nginx HTTP and reverse proxy server.
