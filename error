@@ -60,3 +60,10 @@ Can't configure a value for "map_public_ip_on_launch": its value will be decided
 │ 
 ╵
 PS D:\pia-teach-websit-terraform> Can't configure a value for "map_public_ip_on_launch": its value will be decided automatically based on the result of applying this configuration.
+
+
+│ Error: creating RDS DB Instance (terraform-20260610164007694600000002): operation error RDS: CreateDBInstance, https response error StatusCode: 400, RequestID: 31c64f4b-6da0-496c-ac8a-3f24cf4dea19, api error FreeTierRestrictionError: This instance size isn’t available with free plan accounts. To remove all limitations, upgrade your account plan.
+│ 
+│   with aws_db_instance.piano_db,
+│   on main.tf line 146, in resource "aws_db_instance" "piano_db":
+│  146: resource "aws_db_instance" "piano_db" {
