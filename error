@@ -42,3 +42,12 @@ resource "aws_db_subnet_group" "piano_db_subnet_group" {
     Name = "PianoDBSubnetGroup-CI-CD"
   }
 }
+
+
+
+│ Error: Duplicate resource "aws_db_subnet_group" configuration
+│ 
+│   on main.tf line 176:
+│  176: resource "aws_db_subnet_group" "piano_db_subnet_group" {
+│ 
+│ A aws_db_subnet_group resource named "piano_db_subnet_group" was already declared at main.tf:32,1-55. Resource names must be unique per type in each module.
